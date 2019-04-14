@@ -74,7 +74,6 @@ private:
 
     void SetState (KeilConversionState state);
 
-    void ReplaceUIDAndWriteLine(const char* text);
     void WriteLine(const char* text);
     void WriteInt(int number);
     void WriteHex(int number);
@@ -83,8 +82,6 @@ private:
     bool CreateMakeFile(const char* makeFileName);
     bool CreateJLinkFile(const char* jlinkFileName);
     bool CreateLDScript(const char* ldScriptFileName);
-    bool CreateProjectFile(const char* projectFileName);
-    bool CreateCProjectFile(const char* cProjectFileName);
 
     void ParseLine(TString& line);
     void ParseParams(TString& line);
