@@ -16,4 +16,5 @@ Options:
 
 Example:
 
+Keil2GCC.exe d:\YourKeilProject\YourProject.uvproj
 Keil2GCC.exe d:\YourSTMCubeProject\MDK-ARM\TestF103.uvproj ..\makefile
