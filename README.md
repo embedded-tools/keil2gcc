@@ -9,17 +9,17 @@ This utility goes through Keil project file and creates:<br />
   -it generates *.s  file (if you don't have any), but is always better to find original startup file from your MCU manufacturer<br />
 <br />
 
-Supported MCU types:
-
--STM32F0xx
--STM32F1xx
--STM32F3xx
--STM32F4xx
--STM32F7xx
--NXP LCP17x00
-
-Conversion does not work well if another MCU type is used.
-
+Supported MCU types:<br />
+<br />
+-STM32F0xx<br />
+-STM32F1xx<br />
+-STM32F3xx<br />
+-STM32F4xx<br />
+-STM32F7xx<br />
+-NXP LCP17x00<br />
+<br />
+Conversion does not work well if another MCU type is used.<br />
+<br />
 This utility is also demostrating how easy is to do such things with PersistantLibrary (see https://github.com/embedded-tools/PersistenceLibrary )<br />
 
   
