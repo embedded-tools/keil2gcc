@@ -110,6 +110,10 @@ void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
 
     TFilePath targetFile = projectPath + targetDirectory;
     TFilePath targetPath = targetFile.ExtractFileDirectory();
+    if (targetFile==targetPath)
+    {
+        targetFile += "makefile";
+    }
 
     res = ParseKeilProjectSettings(projectFile, keilTargetIndex, targetDirectory, forceSoftFPU);
     if (!res) 
@@ -169,7 +173,7 @@ void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
         noErrors = false;
     }
 
-    res = CreateMakeFile(targetPath + "makefile");
+    res = CreateMakeFile(targetFile);
     if (!res)
     {
         printf("\r\nMakefile not created\r\n");
@@ -553,8 +557,16 @@ bool KeilToARMGCC::ParseKeilProjectSettings(const char* keilProjectFile, int kei
                     m_systemFile = filename;
                 }
             }
-        }		
+        }
+        delete fileTagList;
+        fileTagList = NULL;
     }
+
+    delete groupTagList;
+    groupTagList = NULL;
+
+    delete targetList;
+    targetList = NULL;
 
     TFilePath absStartupPath = keilProjectFile;
     absStartupPath.ChangeFileName("");
