@@ -16,7 +16,7 @@ Supported MCU types:<br />
 -STM32F3xx<br />
 -STM32F4xx<br />
 -STM32F7xx<br />
--NXP LCP17x00<br />
+-NXP LCP 17xx<br />
 <br />
 Conversion does not work well if another MCU type is used.<br />
 <br />
