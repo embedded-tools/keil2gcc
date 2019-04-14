@@ -1,4 +1,4 @@
-It converts Keil uVision project file to GCC makefile. It also can convert STMCube project to GCC makefile - you just need to select target platform (in STM Cube) to Keil MDK 4 and then convert keil project to GCC.
+It converts Keil uVision project file to GCC makefile. It also can convert STMCube project to GCC makefile - you just need to select target platform (in STM Cube) to Keil MDK 4 and then convert keil project to GCC.<br />
 <br />
 This utility goes through Keil project file and creates:<br />
   -makefile with list of all source files included into project<br />
