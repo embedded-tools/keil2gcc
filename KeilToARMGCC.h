@@ -42,15 +42,14 @@ private:
     KeilConversionState m_state;
     FILE* m_fileHandle;
 
-    int   m_counter;
     int   m_stackSize;
     int   m_heapSize;
     bool  m_useFPU;
     int   m_fpuVersion;
 
-    TStringList m_irqList;
-    TStringList m_incList;
-    TStringList m_srcList;
+    TStringList m_irqList;   
+    TStringList m_incList;   
+    TStringList m_srcList;   
     TStringList m_defineList;
 
     TString m_targetName;

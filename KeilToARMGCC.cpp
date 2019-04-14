@@ -10,7 +10,6 @@
 
 KeilToARMGCC::KeilToARMGCC()
 {
-    m_counter = 0;
     m_stackSize = 0;
     m_heapSize = 0;
     m_useFPU = false;
@@ -44,7 +43,7 @@ void KeilToARMGCC::ScanLibs(const char* makefilePath, const char* relativePath)
     TFilePath filedir;
     while(true)
     {            
-
+        
         if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
         {
             if (findData.cFileName[0]!='.')
