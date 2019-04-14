@@ -1,6 +1,6 @@
 It converts Keil uVision project file to GCC makefile.
 
-This utility goes through Keil project file and creates:
+This utility goes through Keil project file and creates:<br />
   -makefile with list of all source files included into project
   -it sets proper C/C++ compiler flags that fit to selected MCU
   -it inserts clean command + install command to makefile
