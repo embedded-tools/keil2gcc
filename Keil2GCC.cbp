@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Keil2GCC" />
+		<Option pch_mode="2" />
+		<Option default_target="Debug-Linux" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option platforms="Windows;" />
+				<Option output="Keil2GCC" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug Win32" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-O0" />
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="BasicTypesD" />
+					<Add library="CollectionsD" />
+					<Add library="FileUtilsD" />
+					<Add library="GraphicsD" />
+					<Add library="MathD" />
+					<Add library="PersistenceD" />
+					<Add library="ProtocolsD" />
+					<Add directory="../PersistenceLibrary/IDE/VS9-2008/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option platforms="Windows;" />
+				<Option output="Keil2GCC" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release Win32" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-W" />
+					<Add option="-O2" />
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="BasicTypes" />
+					<Add library="Collections" />
+					<Add library="FileUtils" />
+					<Add library="Graphics" />
+					<Add library="Math" />
+					<Add library="Persistence" />
+					<Add library="Protocols" />
+					<Add directory="../PersistenceLibrary/IDE/VS9-2008/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug-Linux">
+				<Option platforms="Unix;Mac;" />
+				<Option output="Debug/Keil2GCC" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="/home/al/prj/LoRa/RAK811/RAK811_LoRaNode/demo/Keil/RAK811/RAK811.uvprojx -scanlibs Makefile" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-O0" />
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add option="-D_DEBUG" />
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="CollectionsD" />
+					<Add library="GraphicsD" />
+					<Add library="MathD" />
+					<Add library="PersistenceD" />
+					<Add library="ProtocolsD" />
+					<Add library="FileUtilsD" />
+					<Add library="BasicTypesD" />
+					<Add directory="../PersistenceLibrary/IDE/CodeBlocks/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release-Linux">
+				<Option platforms="Unix;Mac;" />
+				<Option output="Release/Keil2GCC" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add option="-DNDEBUG" />
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../PersistenceLibrary/Source/BasicTypes" />
+					<Add directory="../PersistenceLibrary/Source/Collections" />
+					<Add directory="../PersistenceLibrary/Source/FileUtils" />
+					<Add directory="../PersistenceLibrary/Source/Graphics" />
+					<Add directory="../PersistenceLibrary/Source/Math" />
+					<Add directory="../PersistenceLibrary/Source/Persistence" />
+					<Add directory="../PersistenceLibrary/Source/Protocols" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="BasicTypes" />
+					<Add library="Collections" />
+					<Add library="FileUtils" />
+					<Add library="Graphics" />
+					<Add library="Math" />
+					<Add library="Persistence" />
+					<Add library="Protocols" />
+					<Add directory="../PersistenceLibrary/IDE/CodeBlocks/lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="KeilToARMGCC.cpp" />
+		<Unit filename="KeilToARMGCC.h" />
+		<Unit filename="KeilToGCC.cpp" />
+		<Unit filename="ReadMe.txt" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

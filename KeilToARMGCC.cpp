@@ -5,7 +5,13 @@
 #include "TXmlDoc.h"
 #include "TXmlTagDynamicPool.h"
 #include "TRandom.h"
+#ifdef WIN32
 #include <windows.h>
+#else
+#include <stdlib.h> 
+#include <linux/limits.h>
+#include <dirent.h>
+#endif
 #include <stdio.h>
 
 KeilToARMGCC::KeilToARMGCC()
@@ -25,6 +31,7 @@ void KeilToARMGCC::SetState (KeilConversionState state)
 
 void KeilToARMGCC::ScanLibs(const char* makefilePath, const char* relativePath)
 {
+#ifdef WIN32
     WIN32_FIND_DATAA findData;
     HANDLE hFindHandle;
     char filter [512];
@@ -89,6 +96,69 @@ void KeilToARMGCC::ScanLibs(const char* makefilePath, const char* relativePath)
         if (!FindNextFileA(hFindHandle, &findData)) break;        
     }
     FindClose(hFindHandle);
+#else
+    struct dirent *findData = nullptr;
+    DIR *hFindHandle = nullptr;
+    char filter [512];
+    char subpath[512];
+
+    sprintf(filter, "%s%s*.*", makefilePath, relativePath+2);  
+
+    hFindHandle = opendir(filter);
+    if (hFindHandle == nullptr)
+    {
+        return;
+    }
+
+    TFilePath filename;
+    TFilePath fileExt;
+    TFilePath filedir;
+    while((findData = readdir(hFindHandle)) != nullptr)
+    {                    
+        if (findData->d_type == DT_DIR)
+        {
+            if (findData->d_name[0]!='.')
+            {   
+                if (relativePath==NULL)
+                {
+                    sprintf(subpath, "%s\\", findData->d_name );
+                } else {
+                    sprintf(subpath, "%s%s\\", relativePath, findData->d_name );
+                }                
+                printf("  %s\r\n", subpath);
+
+                ScanLibs(makefilePath, subpath);
+            }
+        } else 
+        {
+            filename  = relativePath;
+            filename += findData->d_name;
+            filename.ChangeSeparator('/');
+            filedir   = filename.ExtractFileDirectory();
+            fileExt   = filename.ExtractFileExt();
+            if (filedir.LastChar()=='/')
+            {
+                filedir.SetLength(filedir.Length()-1);
+            }
+            if ((fileExt==".c") || (fileExt==".cpp"))
+            {                
+                printf("    %s\r\n", filename);
+                if (m_srcList.IndexOf(filename)==-1)
+                {
+                    m_srcList.Add(filename);
+                }
+            } else if (fileExt==".h")
+            {
+                printf("    %s\r\n", filename);
+                if (m_incList.IndexOf(filedir)==-1)
+                {
+                    m_incList.Add(filedir);
+                }
+            }            
+        }        
+    }
+    closedir(hFindHandle);
+#endif
 }
 
 void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
@@ -102,7 +172,11 @@ void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
 
     TFilePath projectFile, projectPath;
     projectFile.SetLength(512);
+#ifdef WIN32
     GetFullPathNameA(uv4ProjectFile, 512, (LPSTR)projectFile.ToPChar(), NULL);
+#else
+    realpath(uv4ProjectFile, (char *)projectFile.ToPChar());
+#endif
     projectFile.SetLength(strlen(projectFile.ToPChar()));
 
     projectPath = projectFile;
