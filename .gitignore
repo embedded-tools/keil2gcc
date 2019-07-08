@@ -1,0 +1,9 @@
+*.o
+*.d
+*.log
+*.patch
+*.depend
+*.layout
+Debug
+Release
+lib

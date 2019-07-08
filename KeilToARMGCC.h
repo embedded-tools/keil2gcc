@@ -19,7 +19,7 @@
 
 #include "TString.h"
 #include "TStringList.h"
-#include "TXMLTag.h"
+#include "TXmlTag.h"
 #include "TList.h"
 
 enum KeilConversionState
@@ -101,7 +101,7 @@ public:
         const char* targetDirectory,
         bool        forceSoftFPU);
 
-    void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
+    void DoConversion(const char*  uv4ProjectFile,
         int         keilTargetIndex,
         const char* targetDirectory, 
         bool        forceSoftFPU,
