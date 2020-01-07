@@ -26,9 +26,9 @@ This utility is also demostrating how easy is to do such things with PersistantL
 <br />
 Binary files:<br />
 <br />
-1.04 - https://ulozto.cz/file/LrkcAXtHzzoG/keil2gcc-1-04-zip<br />
-1.05 - https://ulozto.cz/file/H7SgCj1g2Bdm/keil2gcc-1-05-zip<br />
-1.06 - https://ulozto.cz/file/OVUEkO1UZ0jm/keil2gcc-1-06-zip<br />
-
+1.03 - not available anymore  - used for youtube video https://www.youtube.com/watch?v=ua8jki9Vjx4<br />
+1.04 - https://ulozto.cz/file/LrkcAXtHzzoG/keil2gcc-1-04-zip  (added -scanlib feature)<br />
+1.05 - https://ulozto.cz/file/H7SgCj1g2Bdm/keil2gcc-1-05-zip  (support for Keil v5 added)<br />
+1.06 - https://ulozto.cz/file/OVUEkO1UZ0jm/keil2gcc-1-06-zip  (linux support added)<br />
   
 
