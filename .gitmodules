@@ -1,0 +1,3 @@
+[submodule "PersistenceLibrary"]
+	path = PersistenceLibrary
+	url = https://github.com/embedded-tools/PersistenceLibrary.git
