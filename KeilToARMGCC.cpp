@@ -186,6 +186,8 @@ void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
     TFilePath targetPath = targetFile.ExtractFileDirectory();
     if (targetFile==targetPath)
     {
+		//target file does not contain filename, just a directory
+		//in such case is necessary to add a filename
         targetFile += "makefile";
     }
 
@@ -218,16 +220,23 @@ void KeilToARMGCC::DoConversion(const char*  uv4ProjectFile,
         deviceName[i]='_';
     }
 
-    m_startupFile = "gcc_startupfile_";
-    m_startupFile += deviceName;	
-    m_startupFile += ".s";
-
-    res = CreateStartupFile(targetPath + m_startupFile);
-    if (!res)
+	//is startup file a gcc version?
+	bool gcc = m_startupFile.Contains("/gcc/") || m_startupFile.Contains("/gcc_");
+	if (!gcc)
     {
-        printf("\r\nStartup file creating failed\r\n");
-        noErrors = false;
-    }
+		//new startup file is generated from 
+		//previously parsed irq handlers
+		m_startupFile = "gcc_startupfile_";
+		m_startupFile += deviceName;	
+		m_startupFile += ".s";
+
+		res = CreateStartupFile(targetPath + m_startupFile);
+		if (!res)
+		{
+			printf("\r\nStartup file creating failed\r\n");
+			noErrors = false;
+		}
+	}
 
     m_ldScriptFile  = "gcc_linkerfile_";
     m_ldScriptFile += deviceName;
@@ -597,7 +606,33 @@ bool KeilToARMGCC::ParseKeilProjectSettings(const char* keilProjectFile, int kei
                 filename.Trim();
                 if (filename.Contains("startup_"))
                 {
+                    if (m_startupFile.Length()>0)
+                    {
+                        printf("Project definition contains more startup files!");
+                    }
+                    if (filename.Contains("/arm/"))
+                    {
+                        //startup file is designed for keil uvision
+                        //checks if gcc version is present
+                        TString gccRelativePath = filename;
+                        int n = gccRelativePath.IndexOf("/arm/");
+                        if (n>0)
+                        {
+                            gccRelativePath[n+1] = 'g';
+                            gccRelativePath[n+2] = 'c';
+                            gccRelativePath[n+3] = 'c';
+                        }
+                        TFilePath gccfile = targetPath + gccRelativePath;
+                        FILE* file = fopen(gccfile.ToPChar(), "rb");
+                        if (file)
+                        {
+                            fclose(file);
+                            //gcc version exists
+                            filename = gccfile;
+                        }
+                    }
                     m_startupFile = filename;
+                
                 } else {
                     fileExt = filename.ExtractFileExt();
                     fileExt.LowerCase();
@@ -644,6 +679,7 @@ bool KeilToARMGCC::ParseKeilProjectSettings(const char* keilProjectFile, int kei
 
     TFilePath absStartupPath = keilProjectFile;
     absStartupPath.ChangeFileName("");
+	absStartupPath.ChangeSeparator('/');
     absStartupPath += m_startupFile ;
 
     m_stackSize = -1;
@@ -671,9 +707,8 @@ bool KeilToARMGCC::ParseKeilProjectSettings(const char* keilProjectFile, int kei
     }
     if (m_irqList.Count()==0)
     {
-        printf("ISR vectors not found, is not possible to generate startup file\r\n");
-
-    }
+        printf("ISR vectors not found\r\n");
+    } else 
     if (m_state!=kcsEnd)
     {
         printf("End of ISR vector table not found\r\n");
@@ -1016,7 +1051,7 @@ bool KeilToARMGCC::CreateMakeFile(const char* makeFileName)
     WriteLine("OS	= arm-none-eabi-size\r\n");
     WriteLine("OD	= arm-none-eabi-objdump\r\n");
     WriteLine("\r\n");
-    WriteLine("VECTOR	= ./"); WriteLine(m_startupFile); WriteLine("\r\n");
+    WriteLine("VECTOR	= "); WriteLine(m_startupFile); WriteLine("\r\n");
     WriteLine("\r\n");
     WriteLine("LDSCRIPT = ./"); WriteLine(m_ldScriptFile); WriteLine("\r\n");
     WriteLine("LDFLAGS  = -mcpu=");
