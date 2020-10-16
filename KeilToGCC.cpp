@@ -10,15 +10,15 @@ int main(int argc, char* argv[])
 {
     if (argc<=1)
     {
-        printf("\r\nKeil MDK to ARM GCC makefile converter v1.06\r\n");
-        printf("(c) 2018 Ondrej Sterba, osterba@atlas.cz \r\n");
+        printf("\r\nKeil MDK to ARM GCC makefile converter v1.07\r\n");
+        printf("(c) 2017-2020 Ondrej Sterba, osterba@atlas.cz \r\n");
         printf("\r\n");
         printf("Usage: keil2gcc uv_project_file [-soft] [-scanlibs] [makefile_name]\r\n");
         printf("\r\n");
         printf("Options:\r\n");		
         printf("    -soft            Force using software emulated FPU\r\n");
         printf("    -scanlibs        Scans subdirectories for source codes not included in project file\r\n");
-        printf("    makefile_name    Optional, default value is '.\\makefile'\r\n");
+        printf("    makefile_name    optional - makefile path relative to uv_project_file, default value is '.\\makefile'\r\n");
         printf("\r\n");
         return -1;
     }
