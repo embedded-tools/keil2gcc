@@ -30,5 +30,6 @@ Binary files:<br />
 1.04 - https://keil2gcc.bbot.cz/file/keil2gcc_1.04.zip  (added -scanlib feature)<br />
 1.05 - https://keil2gcc.bbot.cz/file/keil2gcc_1.05.zip  (support for Keil v5 added)<br />
 1.06 - https://keil2gcc.bbot.cz/file/keil2gcc_1.06.zip  (minor bug fixes)<br />
+1.07 - https://keil2gcc.bbot.cz/file/keil2gcc_1.07.zip  (checks for presence of original gcc startup file by manufacturer - tested with some waveshare dev kits)<br />
   
 
