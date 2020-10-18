@@ -707,7 +707,14 @@ bool KeilToARMGCC::ParseKeilProjectSettings(const char* keilProjectFile, int kei
     }
     if (m_irqList.Count()==0)
     {
-        printf("ISR vectors not found\r\n");
+        bool gcc_startup_found = m_startupFile.Contains("/gcc") || m_startupFile.Contains("/gcc_");
+        if (!gcc_startup_found)
+        {
+           printf("ISR vectors not found\r\n");
+        };
+        //ISR vector table is not needed if project definition 
+        //contains original startup file by manufacturer,
+        //therefore also does not make sense to show error message
     } else 
     if (m_state!=kcsEnd)
     {
