@@ -26,7 +26,7 @@ This utility is also demostrating how easy is to do such things with PersistantL
 <br />
 Binary files:<br />
 <br />
-1.03 - not available anymore  - used for youtube video https://www.youtube.com/watch?v=ua8jki9Vjx4<br />
+1.03 - not available anymore
 1.04 - https://keil2gcc.bbot.cz/file/keil2gcc_1.04.zip  (added -scanlib feature)<br />
 1.05 - https://keil2gcc.bbot.cz/file/keil2gcc_1.05.zip  (support for Keil v5 added)<br />
 1.06 - https://keil2gcc.bbot.cz/file/keil2gcc_1.06.zip  (minor bug fixes)<br />
